@@ -24,4 +24,15 @@ class District extends Model
         return $this->hasMany(Space::class);
     }
 
+    public function media()
+    {
+        return $this->morphMany(Media::class, 'mediable');
+    }
+
+    protected function casts(): array
+    {
+        return [
+            'media' => 'array',
+        ];
+    }
 }
