@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\District\DistrictList;
 use App\Livewire\Settings\Appearance;
 use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Profile;
@@ -14,6 +15,8 @@ Route::get('/', function () {
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
+
+Route::get('districts', DistrictList::class)->name('districts');
 
 Route::middleware(['auth'])->group(function () {
     Route::redirect('settings', 'settings/profile');
