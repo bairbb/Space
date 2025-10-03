@@ -15,6 +15,7 @@ class Space extends Model
         'title',
         'slug',
         'district_id',
+        'user_id',
         'description',
         'directions',
         'latitude',

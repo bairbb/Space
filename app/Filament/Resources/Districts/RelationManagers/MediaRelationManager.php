@@ -20,69 +20,69 @@ class MediaRelationManager extends RelationManager
 {
     protected static string $relationship = 'media';
 
-    public function form(Schema $schema): Schema
-    {
-        return $schema
-            ->components([
-                TextInput::make('mediable_type')
-                    ->required(),
-                TextInput::make('mediable_id')
-                    ->required()
-                    ->numeric(),
-                TextInput::make('type')
-                    ->required(),
-                TextInput::make('path')
-                    ->required(),
-                TextInput::make('order')
-                    ->required()
-                    ->numeric()
-                    ->default(0),
-            ]);
-    }
+    // public function form(Schema $schema): Schema
+    // {
+    //     return $schema
+    //         ->components([
+    //             TextInput::make('mediable_type')
+    //                 ->required(),
+    //             TextInput::make('mediable_id')
+    //                 ->required()
+    //                 ->numeric(),
+    //             TextInput::make('type')
+    //                 ->required(),
+    //             TextInput::make('path')
+    //                 ->required(),
+    //             TextInput::make('order')
+    //                 ->required()
+    //                 ->numeric()
+    //                 ->default(0),
+    //         ]);
+    // }
 
-    public function table(Table $table): Table
-    {
-        return $table
-            ->recordTitleAttribute('path')
-            ->columns([
-                TextColumn::make('mediable_type')
-                    ->searchable(),
-                TextColumn::make('mediable_id')
-                    ->numeric()
-                    ->sortable(),
-                TextColumn::make('type')
-                    ->searchable(),
-                TextColumn::make('path')
-                    ->searchable(),
-                TextColumn::make('order')
-                    ->numeric()
-                    ->sortable(),
-                TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-            ])
-            ->filters([
-                //
-            ])
-            ->headerActions([
-                CreateAction::make(),
-                AssociateAction::make(),
-            ])
-            ->recordActions([
-                EditAction::make(),
-                DissociateAction::make(),
-                DeleteAction::make(),
-            ])
-            ->toolbarActions([
-                BulkActionGroup::make([
-                    DissociateBulkAction::make(),
-                    DeleteBulkAction::make(),
-                ]),
-            ]);
-    }
+    // public function table(Table $table): Table
+    // {
+    //     return $table
+    //         ->recordTitleAttribute('path')
+    //         ->columns([
+    //             TextColumn::make('mediable_type')
+    //                 ->searchable(),
+    //             TextColumn::make('mediable_id')
+    //                 ->numeric()
+    //                 ->sortable(),
+    //             TextColumn::make('type')
+    //                 ->searchable(),
+    //             TextColumn::make('path')
+    //                 ->searchable(),
+    //             TextColumn::make('order')
+    //                 ->numeric()
+    //                 ->sortable(),
+    //             TextColumn::make('created_at')
+    //                 ->dateTime()
+    //                 ->sortable()
+    //                 ->toggleable(isToggledHiddenByDefault: true),
+    //             TextColumn::make('updated_at')
+    //                 ->dateTime()
+    //                 ->sortable()
+    //                 ->toggleable(isToggledHiddenByDefault: true),
+    //         ])
+    //         ->filters([
+    //             //
+    //         ])
+    //         ->headerActions([
+    //             CreateAction::make(),
+    //             AssociateAction::make(),
+    //         ])
+    //         ->recordActions([
+    //             EditAction::make(),
+    //             DissociateAction::make(),
+    //             DeleteAction::make(),
+    //         ])
+    //         ->toolbarActions([
+    //             BulkActionGroup::make([
+    //                 DissociateBulkAction::make(),
+    //                 DeleteBulkAction::make(),
+    //             ]),
+    //         ]);
+    // }
 }
