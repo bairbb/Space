@@ -29,10 +29,10 @@ class District extends Model
         return $this->morphMany(Media::class, 'mediable');
     }
 
-    protected function casts(): array
-    {
-        return [
-            'media' => 'array',
-        ];
-    }
+    // protected function casts(): array
+    // {
+    //     return [
+    //         'media' => 'array'
+    //     ];
+    // }
 }

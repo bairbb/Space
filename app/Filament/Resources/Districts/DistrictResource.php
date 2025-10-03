@@ -21,8 +21,7 @@ class DistrictResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
-    protected static ?string $navigationLabel = 'Район';
-    protected static ?string $pluralNavigationLabel = 'Районы';
+    protected static ?string $navigationLabel = 'Районы';
 
     protected static ?string $modelLabel = 'Район';
 

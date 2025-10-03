@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('slug')->unique();
             $table->foreignId('district_id')->constrained()->onDelete('cascade');
-            $table->foreignId('user_id')->constrained()->onDelete('cascade')->nullable();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->text('description')->nullable();
             $table->text('directions')->nullable();
             $table->decimal('latitude', 10, 8)->nullable();

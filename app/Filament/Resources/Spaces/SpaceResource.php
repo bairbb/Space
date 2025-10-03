@@ -28,9 +28,7 @@ class SpaceResource extends Resource
 
     protected static ?string $pluralModelLabel = 'Места';
 
-    protected static ?string $navigationLabel = 'Место';
-
-    protected static ?string $pluralNavigationLabel = 'Места';
+    protected static ?string $navigationLabel = 'Мои места';
 
     public static function form(Schema $schema): Schema
     {
@@ -50,7 +48,7 @@ class SpaceResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            RelationManagers\MediaRelationManager::class,
         ];
     }
 

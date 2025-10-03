@@ -2,8 +2,13 @@
 
 namespace App\Filament\Resources\Spaces\Tables;
 
+use Filament\Actions\ActionGroup;
+use Filament\Actions\AssociateAction;
 use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
+use Filament\Actions\DissociateAction;
+use Filament\Actions\DissociateBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
@@ -56,14 +61,22 @@ class SpacesTable
             ->filters([
                 //
             ])
+            ->headerActions([
+                AssociateAction::make(),
+            ])
             ->recordActions([
-                ViewAction::make(),
-                EditAction::make(),
+                ActionGroup::make([
+                    ViewAction::make(),
+                    EditAction::make(),
+                    DeleteAction::make(),
+                ]),
+                DissociateAction::make(),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),
                 ]),
+                DissociateBulkAction::make(),
             ]);
     }
 }

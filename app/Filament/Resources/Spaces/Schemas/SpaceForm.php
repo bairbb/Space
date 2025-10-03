@@ -3,13 +3,17 @@
 namespace App\Filament\Resources\Spaces\Schemas;
 
 use App\Models\District;
+use App\Models\Media;
+use Filament\Actions\Action;
+use Filament\Actions\CreateAction;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
+use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
-use Illuminate\Support\Facades\Auth;
 
 class SpaceForm
 {
@@ -102,6 +106,21 @@ class SpaceForm
                     ])
                     ->columns(1)
                     ->collapsible(),
+                Section::make('Изображения')
+                    ->schema([
+                        FileUpload::make('media')
+                            ->label('Изображение')
+                            ->image()
+                            ->multiple()
+                            ->directory('images/spaces')
+                            ->afterStateUpdated(function($state, $set) {
+                                dd($set);
+                            }),
+                            // ->afterStateUpdated(function ($state) {
+                            //     dd($state);
+                            // }),
+                        
+                    ]),
             ])
             ->columns(1);
     }
