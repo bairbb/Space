@@ -103,29 +103,6 @@ class SpaceForm
                     ])
                     ->columns(1)
                     ->collapsible(),
-                // Section::make('Изображения')
-                //     ->schema([
-                //         Hidden::make('mediable_id')
-                //             ->default(fn (RelationManager $livewire) => $livewire->getOwnerRecord()->id),
-                //         Hidden::make('mediable_type')
-                //             ->default(fn (RelationManager $livewire) => $livewire->getOwnerRecord()::class),
-                //         Select::make('type')
-                //             ->options([
-                //                 'image' => 'Изображение',
-                //                 'video' => 'Видео',
-                //             ])
-                //             ->required(),
-                //         FileUpload::make('path')
-                //             ->label('Изображение')
-                //             ->image()
-                //             ->directory('images/spaces')
-                //             ->required(),
-                //         TextInput::make('order')
-                //             ->label('Порядок')
-                //             ->numeric()
-                //             ->default(0)
-                //             ->required(),
-                //     ]),
             ])
             ->columns(1);
     }

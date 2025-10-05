@@ -28,7 +28,7 @@ class DistrictForm
                 FileUpload::make('media')
                     ->label('Изображение')
                     ->image()
-                    ->directory('images/districts'),
+                    ->directory('images/districts/'),
             ])
             ->columns(1);
     }

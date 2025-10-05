@@ -22,7 +22,7 @@ class DistrictsTable
                     ->label('Название'),
                 TextColumn::make('description')
                     ->label('Описание'),
-                ImageColumn::make('media.path')
+                ImageColumn::make('media')
                     ->label('Изображение'),
                 TextColumn::make('slug')
                     ->label('слаг')

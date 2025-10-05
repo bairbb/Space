@@ -45,13 +45,6 @@ class SpaceResource extends Resource
         return SpacesTable::configure($table);
     }
 
-    public static function getRelations(): array
-    {
-        return [
-            RelationManagers\MediaRelationManager::class,
-        ];
-    }
-
     public static function getPages(): array
     {
         return [

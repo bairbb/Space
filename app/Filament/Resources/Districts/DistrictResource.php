@@ -39,13 +39,6 @@ class DistrictResource extends Resource
         return DistrictsTable::configure($table);
     }
 
-    public static function getRelations(): array
-    {
-        return [
-            RelationManagers\MediaRelationManager::class,
-        ];
-    }
-
     public static function getPages(): array
     {
         return [
