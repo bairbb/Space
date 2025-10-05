@@ -15,6 +15,7 @@ class District extends Model
         'title',
         'slug',
         'description',
+        'media',
     ];
     
     protected $slugSource = 'title';
@@ -22,11 +23,6 @@ class District extends Model
     public function spaces()
     {
         return $this->hasMany(Space::class);
-    }
-
-    public function media()
-    {
-        return $this->morphMany(Media::class, 'mediable');
     }
 
     // protected function casts(): array

@@ -3,9 +3,6 @@
 namespace App\Filament\Resources\Spaces\Schemas;
 
 use App\Models\District;
-use App\Models\Media;
-use Filament\Actions\Action;
-use Filament\Actions\CreateAction;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\RichEditor;
@@ -24,7 +21,7 @@ class SpaceForm
                 Section::make('Основная информация')
                     ->schema([
                         Hidden::make('user_id')
-                            ->default(auth() -> id()),
+                            ->default(auth()->id()),
                         TextInput::make('title')
                             ->label('Название')
                             ->placeholder('Введите название места')
@@ -106,21 +103,29 @@ class SpaceForm
                     ])
                     ->columns(1)
                     ->collapsible(),
-                Section::make('Изображения')
-                    ->schema([
-                        FileUpload::make('media')
-                            ->label('Изображение')
-                            ->image()
-                            ->multiple()
-                            ->directory('images/spaces')
-                            ->afterStateUpdated(function($state, $set) {
-                                dd($set);
-                            }),
-                            // ->afterStateUpdated(function ($state) {
-                            //     dd($state);
-                            // }),
-                        
-                    ]),
+                // Section::make('Изображения')
+                //     ->schema([
+                //         Hidden::make('mediable_id')
+                //             ->default(fn (RelationManager $livewire) => $livewire->getOwnerRecord()->id),
+                //         Hidden::make('mediable_type')
+                //             ->default(fn (RelationManager $livewire) => $livewire->getOwnerRecord()::class),
+                //         Select::make('type')
+                //             ->options([
+                //                 'image' => 'Изображение',
+                //                 'video' => 'Видео',
+                //             ])
+                //             ->required(),
+                //         FileUpload::make('path')
+                //             ->label('Изображение')
+                //             ->image()
+                //             ->directory('images/spaces')
+                //             ->required(),
+                //         TextInput::make('order')
+                //             ->label('Порядок')
+                //             ->numeric()
+                //             ->default(0)
+                //             ->required(),
+                //     ]),
             ])
             ->columns(1);
     }

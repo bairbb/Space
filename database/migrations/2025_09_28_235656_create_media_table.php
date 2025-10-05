@@ -13,10 +13,9 @@ return new class extends Migration
     {
         Schema::create('media', function (Blueprint $table) {
             $table->id();
-            $table->morphs('mediable');
-            $table->string('type');
+            $table->foreignId('space_id')->constrained();
             $table->string('path');
-            $table->integer('order')->default(0);
+            $table->integer('main')->default(1);
             $table->timestamps();
         });
     }

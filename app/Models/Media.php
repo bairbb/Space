@@ -9,15 +9,13 @@ class Media extends Model
     protected $table = 'media';
 
     protected $fillable = [
-        'mediable_id',
-        'mediable_type',
-        'type',
+        'space_id',
         'path',
-        'order',
+        'main'
     ];
 
-    public function mediable()
+    public function spaces()
     {
-        return $this->morphTo();
+        return $this->belongsTo(Space::class);
     }
 }

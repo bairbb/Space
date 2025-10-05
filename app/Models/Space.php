@@ -40,16 +40,8 @@ class Space extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function media()
+    public function medias()
     {
-        return $this->morphMany(Media::class, 'mediable');
+        return $this->hasMany(Media::class);
     }
-
-    // protected function casts(): array  
-    // {
-    //     return [
-    //         'media' => 'array',
-    //     ];
-
-    // }
 }
