@@ -13,9 +13,8 @@ return new class extends Migration
     {
         Schema::create('media', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('space_id')->constrained();
+            $table->foreignId('space_id')->constrained()->onDelete('cascade');
             $table->string('path');
-            $table->integer('main')->default(1);
             $table->timestamps();
         });
     }

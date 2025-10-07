@@ -11,11 +11,18 @@ class Media extends Model
     protected $fillable = [
         'space_id',
         'path',
-        'main'
     ];
 
     public function spaces()
     {
         return $this->belongsTo(Space::class);
+    }
+
+
+    protected function casts()
+    {
+        return [
+            'path' => 'array',
+        ];
     }
 }

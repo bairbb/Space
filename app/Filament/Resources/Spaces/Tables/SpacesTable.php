@@ -22,33 +22,14 @@ class SpacesTable
             ->columns([
                 TextColumn::make('title')
                     ->searchable()
+                    ->sortable()
                     ->label('Название'),
-                TextColumn::make('district_id')
+                TextColumn::make('district.title')
                     ->label('Район')
                     ->sortable(),
-                TextColumn::make('user_id')
+                TextColumn::make('user.name')
                     ->label('Создатель')
-                    ->numeric()
                     ->sortable(),
-                // TextColumn::make('latitude')
-                //     ->numeric()
-                //     ->sortable(),
-                // TextColumn::make('longitude')
-                //     ->numeric()
-                //     ->sortable(),
-                // TextColumn::make('locality')
-                //     ->searchable(),
-                // TextColumn::make('street')
-                //     ->searchable(),
-                // TextColumn::make('building')
-                //     ->searchable(),
-                // TextColumn::make('phone')
-                //     ->searchable(),
-                // TextColumn::make('email')
-                //     ->label('Email address')
-                //     ->searchable(),
-                // TextColumn::make('website')
-                //     ->searchable(),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -62,7 +43,6 @@ class SpacesTable
                 //
             ])
             ->headerActions([
-                AssociateAction::make(),
             ])
             ->recordActions([
                 ActionGroup::make([
@@ -70,13 +50,11 @@ class SpacesTable
                     EditAction::make(),
                     DeleteAction::make(),
                 ]),
-                DissociateAction::make(),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),
                 ]),
-                DissociateBulkAction::make(),
             ]);
     }
 }

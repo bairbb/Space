@@ -5,10 +5,13 @@ namespace App\Filament\Resources\Spaces\Schemas;
 use App\Models\District;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Hidden;
+use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
 use Filament\Resources\RelationManagers\RelationManager;
+use Filament\Schemas\Components\Fieldset;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 
@@ -32,25 +35,8 @@ class SpaceForm
                             ->options(District::all()->pluck('title', 'id'))
                             ->required(),
                     ])
-                    ->columns(2)
-                    ->collapsible(),
-                Section::make('Контактная информация')
-                    ->schema([
-                        TextInput::make('phone')
-                            ->label('Телефон')
-                            ->tel()
-                            ->mask('+7 999 999 99 99')
-                            ->placeholder('+7 999 999 99 99'),
-                        TextInput::make('email')
-                            ->label('Email')
-                            ->placeholder('Введите email')
-                            ->email(),
-                        TextInput::make('website')
-                            ->label('Вебсайт')
-                            ->placeholder('Введите вебсайт')
-                            ->url(),
-                    ])
-                    ->columns(3)
+                    ->columnSpanFull()
+                    ->columns()
                     ->collapsible(),
                 Section::make('Географическая информация')
                     ->schema([
@@ -90,20 +76,59 @@ class SpaceForm
                             ->label('Дом')
                             ->placeholder('Введите дом'),
                     ])
+                    ->columnSpan(2)
                     ->columns(2)
+                    ->collapsible(),
+                Section::make('Контактная информация')
+                    ->schema([
+                        TextInput::make('phone')
+                            ->label('Телефон')
+                            ->tel()
+                            ->mask('+7 999 999 99 99')
+                            ->placeholder('+7 999 999 99 99'),
+                        TextInput::make('email')
+                            ->label('Email')
+                            ->placeholder('Введите email')
+                            ->email(),
+                        TextInput::make('website')
+                            ->label('Вебсайт')
+                            ->placeholder('Введите вебсайт')
+                            ->url(),
+                    ])
+                    ->columnSpan(1)
                     ->collapsible(),
                 Section::make('Дополнительная информация')
                     ->schema([
                         RichEditor::make('description')
+                            ->disableToolbarButtons(['attachFiles'],)
                             ->label('Описание')
                             ->placeholder('Введите описание'),
                         RichEditor::make('directions')
+                            ->disableToolbarButtons(['attachFiles'],)
                             ->label('Как добраться')
                             ->placeholder('Введите какие то ориентиры или распишите маршрут, что бы было понятно как добраться'),
                     ])
-                    ->columns(1)
+                    ->columnSpan(2)
+                    ->collapsible(),
+                Section::make('Изображения')
+                    ->schema([
+                        Repeater::make('medias')
+                            ->relationship()
+                            ->label('Загрузить изображения')
+                            ->schema([
+                                FileUpload::make('path')
+                                    ->label('Изображение')
+                                    ->image()
+                                    ->multiple()
+                                    ->reorderable()
+                                    ->directory('images/spaces/'),
+                            ])
+                            ->addable(false)
+                            ->deletable(false)
+                            ->columnSpan(1),
+                    ])
                     ->collapsible(),
             ])
-            ->columns(1);
+            ->columns(3);
     }
 }
