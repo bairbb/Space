@@ -54,6 +54,8 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
-            ]);
+            ])
+            ->topNavigation()
+            ->viteTheme('resources/css/filament/admin/theme.css');
     }
 }
